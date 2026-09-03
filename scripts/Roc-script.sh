@@ -336,3 +336,11 @@ fi
 
 ./scripts/feeds update -i -a
 ./scripts/feeds install -a
+
+# ===== 内置 dllkids 第三方源公钥(可选) =====
+if [ -f "$WORKSPACE/keys/dllkids-feed.pub.pem" ]; then
+  echo "[DIY] baking dllkids feed public key into firmware"
+  mkdir -p files/etc/apk/keys
+  cp "$WORKSPACE/keys/dllkids-feed.pub.pem" files/etc/apk/keys/dllkids-feed.pub.pem
+fi
+
